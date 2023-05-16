@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //Slug same as title but instead spaces replaced by dashes
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->text('excerpt');
+            $table->longText('description');
+            $table->boolean('is_published');
+            $table->integer('min_to_read');
             $table->timestamps();
         });
     }
