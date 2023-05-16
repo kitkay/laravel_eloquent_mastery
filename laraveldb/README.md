@@ -9,9 +9,5 @@ then <br/>
 php artisan schema:dump --prune
 
 
-### Adding columns
-php artisan make:migration add_new_col_in_specified_tbl --table=tabl_you_want_to_add_col
-
-
-### Renaming columns
-php artisan make:migration rename_col_in_tbl --table=tbl_you_want_to_renames
+### Adding columns, Renaming columns, Delete column
+php artisan make:migration verb_col_in_tbl --table=tbl_you_want_to_renames
