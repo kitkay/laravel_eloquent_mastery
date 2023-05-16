@@ -12,13 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
-            /**
-             * or delete a list of columns
-             * dropColumn([
-             *  col1, col2, col3, colN
-             * ])
-             */
+            //
         });
     }
 
@@ -28,7 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
+            $table->softDeletes()
+                ->after('min_to_read');
         });
     }
 };
