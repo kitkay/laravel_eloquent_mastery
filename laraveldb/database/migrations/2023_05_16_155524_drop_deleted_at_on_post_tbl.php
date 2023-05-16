@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
+            /**
+             * or delete a list of columns
+             * dropColumn([
+             *  col1, col2, col3, colN
+             * ])
+             */
         });
     }
 
