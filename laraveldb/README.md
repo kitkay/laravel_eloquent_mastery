@@ -25,3 +25,5 @@ php artisan make:model TableName -f (-f flag would generate a factory)
 php artisan make:seeder PostSeeder <br/>
 php artisan db:seed (only works when you add the factory inside the factory seeder.) <br/>
 or  php artisan db:seed --class=NameOfSeeder
+<br/>
+php artisan migrate --seed will migrate first all migrations then seed

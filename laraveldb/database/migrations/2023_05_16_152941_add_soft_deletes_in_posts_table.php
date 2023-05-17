@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->softDeletes()
-                ->after('min_to_read');
+                ->after('updated_at');
         });
     }
 

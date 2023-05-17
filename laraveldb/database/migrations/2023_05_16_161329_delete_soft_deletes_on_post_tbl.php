@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropSoftDeletes();
+//            $table->dropSoftDeletes();
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->softDeletes()
-                ->after('min_to_read');
+//            $table->softDeletes()
+//                ->after('min_to_read');
         });
     }
 };
