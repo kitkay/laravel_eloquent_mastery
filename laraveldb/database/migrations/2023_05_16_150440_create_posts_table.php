@@ -13,7 +13,18 @@ return new class extends Migration
     {
         //Slug same as title but instead spaces replaced by dashes
         Schema::create('posts', function (Blueprint $table) {
-            $table->id()->from(100);
+            $table->id()->startingValue(100);
+            $table->unsignedBigInteger('user_id');
+
+//            $table->foreign('user_id')
+//                ->references('id')
+//                ->on('users')
+//                ->cascadeOnDelete();
+//             Shortcut
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('excerpt')
