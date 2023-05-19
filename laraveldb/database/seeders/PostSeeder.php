@@ -27,7 +27,7 @@ class PostSeeder extends Seeder
             // Instead use
             Post::create([
                 'title' => $post->title,
-                'user_id' => $post->user_id,
+//                'user_id' => $post->user_id,
                 'slug' => $post->slug,
                 'excerpt' => $post->excerpt,
                 'content' => $post->content,
