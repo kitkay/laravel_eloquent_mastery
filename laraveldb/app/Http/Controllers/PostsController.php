@@ -12,11 +12,16 @@ class PostsController extends Controller
      */
     public function index()
     {
+        /**
+         * Using distinct would return just exactly one row.
+         *  just chain ->distinct()
+         */
         $posts = DB::table('posts')
-            ->select('excerpt', 'content')
-            ->get();
+            ->select('excerpt', 'content');
 
-        dd($posts);
+        $added = $posts->addSelect('title')->get();
+
+        dd($added);
     }
 
     /**
