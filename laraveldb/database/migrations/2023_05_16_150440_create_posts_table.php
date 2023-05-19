@@ -14,8 +14,7 @@ return new class extends Migration
         //Slug same as title but instead spaces replaced by dashes
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->startingValue(100);
-            $table->unsignedBigInteger('user_id');
-
+//            $table->unsignedBigInteger('user_id');
 //            $table->foreign('user_id')
 //                ->references('id')
 //                ->on('users')

@@ -1,6 +1,7 @@
 [
     {
         "title": "Post One",
+        "user_id": 1,
         "slug": "post-one",
         "excerpt": "Excerpt of post one",
         "content": "Content of post one",
@@ -9,6 +10,7 @@
     },
     {
         "title": "Post Two",
+        "user_id": 2,
         "slug": "post-two",
         "excerpt": "Excerpt of post two",
         "content": "Content of post two",
