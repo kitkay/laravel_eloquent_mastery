@@ -13,31 +13,14 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Using distinct would return just exactly one row.
-         *  just chain ->distinct()
+         * Using PLUCK to retrieve single column value.
+         * From the first result of a query.
          */
-//        $posts = DB::table('posts')
-//            ->select('excerpt', 'content');
-
-//          USING where clause and first() to fetch single data
-
-//        $posts = DB::table('posts')
-//            ->where('id', 100)
-//            ->first();
-
-//          USING where clause with value to fetch single data
-
-//        $posts = DB::table('posts')
-//            ->where('id', 100)
-//            ->value('content');
-
-        //Using find() to get single data.
         $posts = DB::table('posts')
-        ->find(100);
+            ->pluck('title')
+        ;
 
-//        $added = $posts->addSelect('title')->get();
-
-        dd($posts->content);
+        dd($posts);
     }
 
     /**
