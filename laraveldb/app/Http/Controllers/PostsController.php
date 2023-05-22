@@ -13,11 +13,35 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Using PLUCK to retrieve single column value.
-         * From the first result of a query.
+         * Insert data to our database.
+         *  it is a key => value pair
+         *
+         * We add inserOrIgnore() allows us to insert data into a
+         * database table only if the data doesn't already exist
+         * in the table.
+         * This is to ensure that there are no duplicates will happen
          */
         $posts = DB::table('posts')
-            ->pluck('title')
+            ->insertOrIgnore([
+                [
+                    //                'user_id' => 1,
+                    'title' => 'Inserted through the DB facade2.',
+                    'slug' => 'inserted-through-the-db-facade2',
+                    'excerpt' => 'excerpt2',
+                    'content' => 'Content2',
+                    'is_published' => true,
+                    'min_to_read' => 2
+                ],
+                [
+                    //                'user_id' => 1,
+                    'title' => 'Inserted through the DB facade7.',
+                    'slug' => 'inserted-through-the-db-facade7',
+                    'excerpt' => 'excerpt6',
+                    'content' => 'Content6',
+                    'is_published' => true  ,
+                    'min_to_read' => 5
+                ],
+            ])
         ;
 
         dd($posts);
