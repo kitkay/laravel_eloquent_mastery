@@ -16,33 +16,26 @@ class PostsController extends Controller
          * Insert data to our database.
          *  it is a key => value pair
          *
-         * We add inserOrIgnore() allows us to insert data into a
-         * database table only if the data doesn't already exist
-         * in the table.
-         * This is to ensure that there are no duplicates will happen
+         * Upsert() to perform insert or update operations on large datasets
+         *
+         * 2 params, first is the array to update or insert and 2nd is the column to check?
          */
         $posts = DB::table('posts')
-            ->insertOrIgnore([
+            ->upsert(
                 [
                     //                'user_id' => 1,
-                    'title' => 'Inserted through the DB facade2.',
-                    'slug' => 'inserted-through-the-db-facade2',
-                    'excerpt' => 'excerpt2',
-                    'content' => 'Content2',
+                    'title' => 'X',
+                    'slug' => 'x2321',
+                    'excerpt' => 'excerptx',
+                    'content' => 'Contentx',
                     'is_published' => true,
-                    'min_to_read' => 2
+                    'min_to_read' => 10
                 ],
                 [
-                    //                'user_id' => 1,
-                    'title' => 'Inserted through the DB facade7.',
-                    'slug' => 'inserted-through-the-db-facade7',
-                    'excerpt' => 'excerpt6',
-                    'content' => 'Content6',
-                    'is_published' => true  ,
-                    'min_to_read' => 5
-                ],
-            ])
-        ;
+                    'title',
+                    'slug'
+                ]
+            );
 
         dd($posts);
     }
