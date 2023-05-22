@@ -16,26 +16,25 @@ class PostsController extends Controller
          * Insert data to our database.
          *  it is a key => value pair
          *
-         * Upsert() to perform insert or update operations on large datasets
-         *
-         * 2 params, first is the array to update or insert and 2nd is the column to check?
+         * insertGetID() allows us to insert a record into a db and
+         * retrieve ID in a single query
          */
         $posts = DB::table('posts')
-            ->upsert(
-                [
-                    //                'user_id' => 1,
-                    'title' => 'X',
-                    'slug' => 'x2321',
-                    'excerpt' => 'excerptx',
-                    'content' => 'Contentx',
-                    'is_published' => true,
-                    'min_to_read' => 10
-                ],
-                [
-                    'title',
-                    'slug'
-                ]
-            );
+//            ->insertGetId([
+//                'title' => 'insertGetID',
+//                'slug' => 'insergetid',
+//                'excerpt' => 'excerpt',
+//                'content' => 'Content',
+//                'is_published' => true,
+//                'min_to_read' => 1
+//            ]);
+                //Using update, also we could use orWhere
+             ->where('id', 134)
+             ->orWhere('id', 129)
+             ->update([
+                'excerpt' => 'Laravel 102',
+                'content' => 'Content 10',
+            ]);
 
         dd($posts);
     }
