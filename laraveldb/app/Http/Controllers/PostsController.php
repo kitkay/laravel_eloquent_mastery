@@ -16,25 +16,23 @@ class PostsController extends Controller
          * Insert data to our database.
          *  it is a key => value pair
          *
-         * insertGetID() allows us to insert a record into a db and
-         * retrieve ID in a single query
+         * Increment or decrement allows us to decrease or increase column value
+         *  by a given amount.
+         *  by default amount in increase or decrease is set to null
+         */
+//        $posts = DB::table('posts')
+//             ->where('id', 134)
+//             ->increment('min_to_read', 7);
+//             ->decrement('min_to_read', 7);
+
+        /**
+         * also we could increment of crease multiple values in laravel
          */
         $posts = DB::table('posts')
-//            ->insertGetId([
-//                'title' => 'insertGetID',
-//                'slug' => 'insergetid',
-//                'excerpt' => 'excerpt',
-//                'content' => 'Content',
-//                'is_published' => true,
-//                'min_to_read' => 1
-//            ]);
-                //Using update, also we could use orWhere
-             ->where('id', 134)
-             ->orWhere('id', 129)
-             ->update([
-                'excerpt' => 'Laravel 102',
-                'content' => 'Content 10',
-            ]);
+            ->where('id', '>', 111)
+            ->incrementEach(
+                [ 'min_to_read' => 3]
+            );
 
         dd($posts);
     }
