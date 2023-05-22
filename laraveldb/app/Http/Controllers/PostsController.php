@@ -16,12 +16,28 @@ class PostsController extends Controller
          * Using distinct would return just exactly one row.
          *  just chain ->distinct()
          */
+//        $posts = DB::table('posts')
+//            ->select('excerpt', 'content');
+
+//          USING where clause and first() to fetch single data
+
+//        $posts = DB::table('posts')
+//            ->where('id', 100)
+//            ->first();
+
+//          USING where clause with value to fetch single data
+
+//        $posts = DB::table('posts')
+//            ->where('id', 100)
+//            ->value('content');
+
+        //Using find() to get single data.
         $posts = DB::table('posts')
-            ->select('excerpt', 'content');
+        ->find(100);
 
-        $added = $posts->addSelect('title')->get();
+//        $added = $posts->addSelect('title')->get();
 
-        dd($added);
+        dd($posts->content);
     }
 
     /**
