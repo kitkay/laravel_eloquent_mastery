@@ -13,22 +13,22 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * exits() - used to check if value exists from DB
-         *
-         * doesntExists() - used to check if value does not exist from DB
-         *  also the inverse of exists()
+         * whereBetween - allows to retrieve records that fall within a specified range of values.
+         * whereNotBetween - allows to retrieve records that fall NOT within a specified range of values.
          */
 
         $posts = DB::table('posts')
-            ->where('id', 111)
+//            ->whereBetween(
+//                'min_to_read',
+//                [1, 5]
+//            )
+            ->whereNotBetween(
+                'min_to_read',
+                [1, 5]
+            )
+            ->get()
         ;
-        if($posts->doesntExist()) {
-//            dd("I have found a match");
-            dd('row doenst exists');
-        } else {
-            dd("I have found a match");
-//            dd('fails');
-        }
+        dd($posts);
     }
 
     /**
