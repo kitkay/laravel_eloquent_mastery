@@ -28,11 +28,23 @@ class PostsController extends Controller
         /**
          * also we could increment of crease multiple values in laravel
          */
+//        $posts = DB::table('posts')
+//            ->where('id', '>', 111)
+//            ->incrementEach(
+//                [ 'min_to_read' => 3]
+//            );
+
+        /**
+         * updateOrInsert() is used to update an existing record or insert
+         * a new record if it does not exist.
+         *
+         * update row if ID exists and insert if no ID like that has been found
+         */
         $posts = DB::table('posts')
-            ->where('id', '>', 111)
-            ->incrementEach(
-                [ 'min_to_read' => 3]
-            );
+            ->updateOrInsert([
+                'excerpt' => 'Laravel',
+                'content' => 'Laravel'
+            ], ['id' => 134]);
 
         dd($posts);
     }
