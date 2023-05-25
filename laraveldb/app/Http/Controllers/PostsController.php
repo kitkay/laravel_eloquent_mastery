@@ -13,39 +13,19 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Insert data to our database.
-         *  it is a key => value pair
-         *
-         * Increment or decrement allows us to decrease or increase column value
-         *  by a given amount.
-         *  by default amount in increase or decrease is set to null
+         * Delete
          */
 //        $posts = DB::table('posts')
-//             ->where('id', 134)
-//             ->increment('min_to_read', 7);
-//             ->decrement('min_to_read', 7);
+//            ->where('id', 129)
+//            ->delete();
 
-        /**
-         * also we could increment of crease multiple values in laravel
-         */
 //        $posts = DB::table('posts')
-//            ->where('id', '>', 111)
-//            ->incrementEach(
-//                [ 'min_to_read' => 3]
-//            );
+//            ->where('id', 125)
+//            ->where('title', 'Inserted through the DB facade7.')
+//            ->delete();
 
-        /**
-         * updateOrInsert() is used to update an existing record or insert
-         * a new record if it does not exist.
-         *
-         * update row if ID exists and insert if no ID like that has been found
-         */
-        $posts = DB::table('posts')
-            ->updateOrInsert([
-                'excerpt' => 'Laravel',
-                'content' => 'Laravel'
-            ], ['id' => 134]);
-
+        //Truncate method on Query builder
+        $posts = DB::table('posts')->truncate();
         dd($posts);
     }
 
