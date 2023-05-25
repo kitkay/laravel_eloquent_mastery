@@ -13,19 +13,23 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Delete
+         * Aggregates
+         * MAX, AVE, MIN, MAX, COUNT, SUM
+         *
+         * count - allows to count number of rows in a given table or a result set.
+         * sum - allows to calculate to total
+         * avg - allows to calculate the average of a specific column in a given table or a result set.
+         *  max -allow to find max value in a specific column in given table or result set.
+         *  min -allow to find min value in a specific column in given table or result set.
          */
-//        $posts = DB::table('posts')
-//            ->where('id', 129)
-//            ->delete();
-
-//        $posts = DB::table('posts')
-//            ->where('id', 125)
-//            ->where('title', 'Inserted through the DB facade7.')
-//            ->delete();
-
-        //Truncate method on Query builder
-        $posts = DB::table('posts')->truncate();
+        $posts = DB::table('posts')
+            ->where('is_published', true)
+//            ->count()
+//            ->sum('min_to_read')
+//            ->avg('min_to_read')
+//            ->max('min_to_read')
+            ->min('min_to_read')
+        ;
         dd($posts);
     }
 
