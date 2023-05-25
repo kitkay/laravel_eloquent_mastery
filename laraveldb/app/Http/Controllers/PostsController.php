@@ -13,22 +13,16 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Aggregates
-         * MAX, AVE, MIN, MAX, COUNT, SUM
+         * whereNot or orWhereNot
          *
-         * count - allows to count number of rows in a given table or a result set.
-         * sum - allows to calculate to total
-         * avg - allows to calculate the average of a specific column in a given table or a result set.
-         *  max -allow to find max value in a specific column in given table or result set.
-         *  min -allow to find min value in a specific column in given table or result set.
+         * whereNot - adds a basic where clause to the query but excludes the specified value.
+         * orWhereNot - adds a basic where clause to the query but excludes the specified value.
          */
         $posts = DB::table('posts')
-            ->where('is_published', true)
-//            ->count()
-//            ->sum('min_to_read')
-//            ->avg('min_to_read')
-//            ->max('min_to_read')
-            ->min('min_to_read')
+//            ->whereNot('min_to_read', '>', 5)
+            ->where('min_to_read',  0)
+            ->orWhereNot('is_published', true)
+            ->get()
         ;
         dd($posts);
     }
