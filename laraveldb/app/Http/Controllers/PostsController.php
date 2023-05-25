@@ -13,21 +13,19 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * whereBetween - allows to retrieve records that fall within a specified range of values.
-         * whereNotBetween - allows to retrieve records that fall NOT within a specified range of values.
+         * dd - die dump
+         * dump() - display contents of a variable, it does not end scripts execution.
          */
 
         $posts = DB::table('posts')
-//            ->whereBetween(
-//                'min_to_read',
-//                [1, 5]
-//            )
-            ->whereNotBetween(
+            ->whereBetween(
                 'min_to_read',
                 [1, 5]
             )
             ->get()
+            ->dump()
         ;
+//        dump($posts);
         dd($posts);
     }
 
