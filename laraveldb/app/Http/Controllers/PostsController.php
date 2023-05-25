@@ -13,18 +13,22 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * whereNot or orWhereNot
+         * exits() - used to check if value exists from DB
          *
-         * whereNot - adds a basic where clause to the query but excludes the specified value.
-         * orWhereNot - adds a basic where clause to the query but excludes the specified value.
+         * doesntExists() - used to check if value does not exist from DB
+         *  also the inverse of exists()
          */
+
         $posts = DB::table('posts')
-//            ->whereNot('min_to_read', '>', 5)
-            ->where('min_to_read',  0)
-            ->orWhereNot('is_published', true)
-            ->get()
+            ->where('id', 111)
         ;
-        dd($posts);
+        if($posts->doesntExist()) {
+//            dd("I have found a match");
+            dd('row doenst exists');
+        } else {
+            dd("I have found a match");
+//            dd('fails');
+        }
     }
 
     /**
