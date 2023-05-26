@@ -13,42 +13,30 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * Database Transactions.
+         * 38. Streaming Results Lazily
          *
-         * Pessimistic Locking - for consistency, ensure only one user could update column at a time
-         *                     - users could access same data without conflicting each other.
-         *     lockForUpdate() - cannot be overwritten as long as transaction is not yet done.
-         *     sharedLock() - locking rows in a table, users could still read the row but cannot modify
-         *                    until the lock is released. Preferred use to allow users to read still.
+         * lazy() - used to retrieve a large number of records without
+         *          overwhelming the server's memory
          *
-         * Chunking Data  - retrieves data in smaller more manageable "CHUNKS" rather than getting all data
-         *                  and chunking it afterwards.
-         *                  More efficient on larger datasets.
+         * lazyById() - used to retrieve single record by its ID
+         *            - useful when we want to retrieve specific row without loading record into memory at once.
+         *
+         * these are used to avoid memory consumption at once on our server
          */
-//        $var = DB::transaction(function () {        //Start of Pessimistic Locking
-            //Get balance to user1 (increment)
-//            DB::table('users')
-//                ->where('id', 1)
-//                ->sharedLock()
-//                ->decrement('balance', 20);
-
-            //Add balance to user2 (increment)
-//            DB::table('users')
-//                ->where('id', 2)
-//                ->increment('balance', 20);
-//        }); //End of Pessimistic Locking
 
         //This means we are retrieve 150 rows of data at a time
         $posts = DB::table('posts')
-            ->orderBy('id')
-            ->chunk(150, function ($posts) {
-                foreach ($posts as $post) {
-                    dump($post->title);
-                }
-            })
+//            ->orderBy('id')
+//            ->lazy(100)
+//            ->each(function ($post) { //Passing each() is the same as foreach but instead inside the query
+//                dump($post->title);
+//            })
+            ->where('id', 100)
+            ->lazyById()
+            ->first()
         ;
 
-        dd($posts);
+        dump($posts);
     }
 
     /**
