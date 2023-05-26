@@ -20,21 +20,35 @@ class PostsController extends Controller
          *     lockForUpdate() - cannot be overwritten as long as transaction is not yet done.
          *     sharedLock() - locking rows in a table, users could still read the row but cannot modify
          *                    until the lock is released. Preferred use to allow users to read still.
+         *
+         * Chunking Data  - retrieves data in smaller more manageable "CHUNKS" rather than getting all data
+         *                  and chunking it afterwards.
+         *                  More efficient on larger datasets.
          */
-        $var = DB::transaction(function () {
+//        $var = DB::transaction(function () {        //Start of Pessimistic Locking
             //Get balance to user1 (increment)
-            DB::table('users')
-                ->where('id', 1)
-                ->sharedLock()
-                ->decrement('balance', 20);
+//            DB::table('users')
+//                ->where('id', 1)
+//                ->sharedLock()
+//                ->decrement('balance', 20);
 
             //Add balance to user2 (increment)
-            DB::table('users')
-                ->where('id', 2)
-                ->increment('balance', 20);
-        });
+//            DB::table('users')
+//                ->where('id', 2)
+//                ->increment('balance', 20);
+//        }); //End of Pessimistic Locking
 
-        dd($var);
+        //This means we are retrieve 150 rows of data at a time
+        $posts = DB::table('posts')
+            ->orderBy('id')
+            ->chunk(150, function ($posts) {
+                foreach ($posts as $post) {
+                    dump($post->title);
+                }
+            })
+        ;
+
+        dd($posts);
     }
 
     /**
