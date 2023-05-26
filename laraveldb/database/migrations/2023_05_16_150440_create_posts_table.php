@@ -20,9 +20,9 @@ return new class extends Migration
 //                ->on('users')
 //                ->cascadeOnDelete();
 //             Shortcut
-//            $table->foreignId('user_id')
-//                ->constrained('users')
-//                ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
 
             $table->string('title')->unique();
             $table->string('slug')->unique();

@@ -13,19 +13,14 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * dd - die dump
-         * dump() - display contents of a variable, it does not end scripts execution.
+         * Database Transactions.
          */
 
         $posts = DB::table('posts')
-            ->whereBetween(
-                'min_to_read',
-                [1, 5]
-            )
+            ->whereBetween('min_to_read', [1, 5])
             ->get()
-            ->dump()
-        ;
-//        dump($posts);
+            ->dump();
+
         dd($posts);
     }
 
