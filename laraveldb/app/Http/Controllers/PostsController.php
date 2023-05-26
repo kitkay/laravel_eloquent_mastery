@@ -14,11 +14,18 @@ class PostsController extends Controller
     {
         /**
          * Database Transactions.
+         *
+         * Pessimistic Locking - for consistency, ensure only one user could update column at a time
+         *                     - users could access same data without conflicting each other.
+         *     lockForUpdate() - cannot be overwritten as long as transaction is not yet done.
+         *     sharedLock() - locking rows in a table, users could still read the row but cannot modify
+         *                    until the lock is released. Preferred use to allow users to read still.
          */
         $var = DB::transaction(function () {
             //Get balance to user1 (increment)
             DB::table('users')
                 ->where('id', 1)
+                ->sharedLock()
                 ->decrement('balance', 20);
 
             //Add balance to user2 (increment)
