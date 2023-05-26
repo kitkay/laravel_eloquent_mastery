@@ -15,13 +15,17 @@ class PostsController extends Controller
         /**
          * Database Transactions.
          */
+        DB::transaction(function () {
+            //Get balance to user1 (increment)
+            DB::table('users')
+                ->where('id', 1)
+                ->decrement('balance', 20);
 
-        $posts = DB::table('posts')
-            ->whereBetween('min_to_read', [1, 5])
-            ->get()
-            ->dump();
-
-        dd($posts);
+            //Add balance to user2 (increment)
+            DB::table('users')
+                ->where('id', 2)
+                ->increment('balance', 20);
+        });
     }
 
     /**
