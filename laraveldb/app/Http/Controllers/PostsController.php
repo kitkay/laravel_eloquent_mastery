@@ -15,7 +15,7 @@ class PostsController extends Controller
         /**
          * Database Transactions.
          */
-        DB::transaction(function () {
+        $var = DB::transaction(function () {
             //Get balance to user1 (increment)
             DB::table('users')
                 ->where('id', 1)
@@ -26,6 +26,8 @@ class PostsController extends Controller
                 ->where('id', 2)
                 ->increment('balance', 20);
         });
+
+        dd($var);
     }
 
     /**
