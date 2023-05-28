@@ -13,29 +13,37 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 38. Streaming Results Lazily
+         * 39. Raw Methods
          *
-         * lazy() - used to retrieve a large number of records without
-         *          overwhelming the server's memory
+         * using selectRaw
          *
-         * lazyById() - used to retrieve single record by its ID
-         *            - useful when we want to retrieve specific row without loading record into memory at once.
+         * when using havingRaw, groupBy is needed and then add get()
+         * also, don't forget select() and not selectRaw()
+         * using select(), 1st param: columnName, 2nd param: DB::raw()
          *
-         * these are used to avoid memory consumption at once on our server
+         * groupByRaw -
          */
 
-        //This means we are retrieve 150 rows of data at a time
         $posts = DB::table('posts')
-//            ->orderBy('id')
-//            ->lazy(100)
-//            ->each(function ($post) { //Passing each() is the same as foreach but instead inside the query
-//                dump($post->title);
-//            })
-            ->where('id', 100)
-            ->lazyById()
-            ->first()
-        ;
+            // Using selectRaw()
+//            ->selectRaw('COUNT(*) as post_count')
+//            ->first()
 
+            // Using whereRaw()
+//            ->whereRaw('created_at > NOW() - INTERVAL 5 DAY')
+//            ->get()
+
+            // Select + groupBy + harvinRaw ->get()
+//            ->select('user_id', DB::raw('SUM(min_to_read) as total_time'))
+//            ->groupBy('user_id')
+//            ->havingRaw('SUM(min_to_read) > 5')
+//            ->get()
+
+            // Using groupByRaw()
+            ->select('user_id', DB::raw('AVG(min_to_read) as avg_mintoread'))
+            ->groupByRaw('user_id')
+            ->get()
+        ;
         dump($posts);
     }
 
