@@ -13,35 +13,25 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 39. Raw Methods
+         * 40. Ordering
          *
-         * using selectRaw
+         *  orderBy - allows to sort your query results by a specific column in ascending or desc order
+         *          default ASC
          *
-         * when using havingRaw, groupBy is needed and then add get()
-         * also, don't forget select() and not selectRaw()
-         * using select(), 1st param: columnName, 2nd param: DB::raw()
-         *
-         * groupByRaw -
+         *  latest and oldest methods - allows us to sort query results by the created_at in DESC and ASC order
          */
 
         $posts = DB::table('posts')
-            // Using selectRaw()
-//            ->selectRaw('COUNT(*) as post_count')
-//            ->first()
-
-            // Using whereRaw()
-//            ->whereRaw('created_at > NOW() - INTERVAL 5 DAY')
+            // orderBy
+//            ->orderBy('title')
+//            ->orderBy('min_to_read')
 //            ->get()
 
-            // Select + groupBy + harvinRaw ->get()
-//            ->select('user_id', DB::raw('SUM(min_to_read) as total_time'))
-//            ->groupBy('user_id')
-//            ->havingRaw('SUM(min_to_read) > 5')
-//            ->get()
-
-            // Using groupByRaw()
-            ->select('user_id', DB::raw('AVG(min_to_read) as avg_mintoread'))
-            ->groupByRaw('user_id')
+            //latest or oldest - methods
+            // Also latest() === orderBy('col', ascending)
+            // Also oldest() === orderBy('col', descending)
+//            ->latest('title')
+            ->oldest('title')
             ->get()
         ;
         dump($posts);
