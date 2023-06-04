@@ -13,17 +13,16 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 41. Full text indexes
+         * 42. limit () is used to limit the number of records that are returned from a query
+         *     offset() is used to skip a specified number of records from the beginning of a query.
          *
-         * This is used for full text search and are designed for high performance searching.
+         *  Disavantages
+         *      it fetched first the whole rows matched then perform the offsetting and limit.
          */
         $posts = DB::table('posts')
-            ->whereFullText('content', 'Eos')
-            ->orWhereFullText('content', 'autem')
-            ->get()
-
-
-        ;
+            ->limit(10)
+            ->offset(5)
+            ->get();
 
         dump($posts);
     }
