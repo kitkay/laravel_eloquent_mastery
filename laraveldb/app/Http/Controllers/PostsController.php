@@ -13,27 +13,18 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 40. Ordering
+         * 41. Full text indexes
          *
-         *  orderBy - allows to sort your query results by a specific column in ascending or desc order
-         *          default ASC
-         *
-         *  latest and oldest methods - allows us to sort query results by the created_at in DESC and ASC order
+         * This is used for full text search and are designed for high performance searching.
          */
-
         $posts = DB::table('posts')
-            // orderBy
-//            ->orderBy('title')
-//            ->orderBy('min_to_read')
-//            ->get()
-
-            //latest or oldest - methods
-            // Also latest() === orderBy('col', ascending)
-            // Also oldest() === orderBy('col', descending)
-//            ->latest('title')
-            ->oldest('title')
+            ->whereFullText('content', 'Eos')
+            ->orWhereFullText('content', 'autem')
             ->get()
+
+
         ;
+
         dump($posts);
     }
 
