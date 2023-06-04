@@ -13,16 +13,15 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 45. Pagination - technique that allows to divide a large set of data into smaller chunks of pages
-         *  by default its 15 items perpage
-         *
-         *  if we modify paginate() -> paginate(perPage, [arrayOfColumns*], customPageName)
-         *  customPageName = if we wanted to use different page name on our url
+         * 46. simplePaginate() - exactly as paginate() but changes are
+         *      it is better to be used on large dataset as it is more efficient
+         *      it uses more LESS memory compared to paginate()
+         *      however - if we are just dealing with small project then paginate() is our togo.
          */
         $posts = DB::table('posts')
-            ->paginate(5, ['*'], 'p')
+            ->simplePaginate()
         ;
-//        dd($posts->links());
+
         dump($posts);
     }
 
