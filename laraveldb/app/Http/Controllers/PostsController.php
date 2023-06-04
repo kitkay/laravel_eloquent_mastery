@@ -13,19 +13,17 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 44. Removing existing ordering
+         * 45. Pagination - technique that allows to divide a large set of data into smaller chunks of pages
+         *  by default its 15 items perpage
+         *
+         *  if we modify paginate() -> paginate(perPage, [arrayOfColumns*], customPageName)
+         *  customPageName = if we wanted to use different page name on our url
          */
         $posts = DB::table('posts')
-            ->orderBy('is_published')
-//            ->get()
+            ->paginate(5, ['*'], 'p')
         ;
-
-        $unordered = $posts->reorder(
-            'title', 'desc'
-        )->get()
-        ;
-
-        dump($unordered);
+//        dd($posts->links());
+        dump($posts);
     }
 
     /**
