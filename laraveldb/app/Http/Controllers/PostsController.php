@@ -13,15 +13,16 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 42. limit () is used to limit the number of records that are returned from a query
-         *     offset() is used to skip a specified number of records from the beginning of a query.
+         * 43. Conditional Clauses
          *
-         *  Disavantages
-         *      it fetched first the whole rows matched then perform the offsetting and limit.
+         *  when()
+         *  Advantage - simplicity, flexibility, readability
+         *  Disadvantages - performance, debugging
          */
         $posts = DB::table('posts')
-            ->limit(10)
-            ->offset(5)
+            ->when(function ($query) {
+                return $query->where('is_published', true);
+            })
             ->get();
 
         dump($posts);
