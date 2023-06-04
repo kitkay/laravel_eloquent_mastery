@@ -13,19 +13,19 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 43. Conditional Clauses
-         *
-         *  when()
-         *  Advantage - simplicity, flexibility, readability
-         *  Disadvantages - performance, debugging
+         * 44. Removing existing ordering
          */
         $posts = DB::table('posts')
-            ->when(function ($query) {
-                return $query->where('is_published', true);
-            })
-            ->get();
+            ->orderBy('is_published')
+//            ->get()
+        ;
 
-        dump($posts);
+        $unordered = $posts->reorder(
+            'title', 'desc'
+        )->get()
+        ;
+
+        dump($unordered);
     }
 
     /**
