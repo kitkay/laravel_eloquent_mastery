@@ -13,22 +13,10 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 48. Intro to Eloquent
-         *  It is an ORM system that is included in laravel framework to write easy and intuitive
-         *  way of making sql.
-         *  we could create query queries with chainable syntax and in a OOP way.
-         *
-         *  disadvantages: maybe difficult to debug, may increase complexity
-         *
-         * when should we use eloquent
-         *  1. when we want to work with database using OOP syntax
-         *  2. smaller datasets
-         *  3. It is better to use Query Builder if complex and large datasets
+         * 49. Eloquent Model Conventions
          */
-        $posts = ''
-        ;
-
-        dump($posts);
+        $dateFormat = "U";
+        echo date('Y-m-d', date($dateFormat));
     }
 
     /**
