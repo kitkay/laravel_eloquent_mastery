@@ -13,16 +13,19 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 47. cursorPaginate()
+         * 48. Intro to Eloquent
+         *  It is an ORM system that is included in laravel framework to write easy and intuitive
+         *  way of making sql.
+         *  we could create query queries with chainable syntax and in a OOP way.
          *
-         * Advantage - faster data retrieval, retrieve data in smaller chunks
-         *             accurate sorting of data
+         *  disadvantages: maybe difficult to debug, may increase complexity
          *
-         * Disadvantage - can be less intuitive, can be only used with ordered data.
+         * when should we use eloquent
+         *  1. when we want to work with database using OOP syntax
+         *  2. smaller datasets
+         *  3. It is better to use Query Builder if complex and large datasets
          */
-        $posts = DB::table('posts')
-            ->orderBy('id')
-            ->cursorPaginate(5)
+        $posts = ''
         ;
 
         dump($posts);
