@@ -13,13 +13,16 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 46. simplePaginate() - exactly as paginate() but changes are
-         *      it is better to be used on large dataset as it is more efficient
-         *      it uses more LESS memory compared to paginate()
-         *      however - if we are just dealing with small project then paginate() is our togo.
+         * 47. cursorPaginate()
+         *
+         * Advantage - faster data retrieval, retrieve data in smaller chunks
+         *             accurate sorting of data
+         *
+         * Disadvantage - can be less intuitive, can be only used with ordered data.
          */
         $posts = DB::table('posts')
-            ->simplePaginate()
+            ->orderBy('id')
+            ->cursorPaginate(5)
         ;
 
         dump($posts);
