@@ -10,10 +10,12 @@ class Post extends Model
     use HasFactory;
 
     /**
-     * 49. Eloquent Model Conventions
-     *
-     * this means we are accessing users table instead of the default post table.
+     * 50. Fillable and guarded
      */
+    protected $fillable = [];
+
+    protected $guarded = []; //means allow all attr for mass assignment
+
     protected $table = 'users';
 
     /**
