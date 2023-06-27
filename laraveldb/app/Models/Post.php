@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     /**
-     * 50. Fillable and guarded
+     * 51. Builder Queries
      */
     protected $fillable = [];
 
@@ -23,7 +23,7 @@ class Post extends Model
      * here we use slug as custom primary key
      * when using ID to find certain row it will return null since we use slug as primary key
      */
-    protected $primaryKey = 'slug';
+//    protected $primaryKey = 'slug';
 
     /**
      * Changing auto increment key

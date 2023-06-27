@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,10 +14,9 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 49. Eloquent Model Conventions
+         * 51. Build Queries
          */
-        $dateFormat = "U";
-        echo date('Y-m-d', date($dateFormat));
+        Post::where('is_published', true)->get();
     }
 
     /**
