@@ -14,9 +14,22 @@ class PostsController extends Controller
     public function index()
     {
         /**
-         * 51. Build Queries
+         * 51. Build Querie
+         *
+         * where() - allows flexibility, readability and scalability
+         *
          */
-        Post::where('is_published', true)->get();
+        $posts = Post::where('is_published', true)
+            ->where('min_to_read', '>', 5)
+            ->orderBy('title', 'DESC')
+            ->get()
+//            ->count()
+//            ->cursorPaginate(5)
+        ;
+
+        echo '<pre>';
+        echo json_encode($posts, JSON_PRETTY_PRINT);
+        echo '</pre>';
     }
 
     /**

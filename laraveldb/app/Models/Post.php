@@ -16,14 +16,14 @@ class Post extends Model
 
     protected $guarded = []; //means allow all attr for mass assignment
 
-    protected $table = 'users';
+    protected $table = 'posts';
 
     /**
      * Changing the primary key - like making a custom primary key
      * here we use slug as custom primary key
      * when using ID to find certain row it will return null since we use slug as primary key
      */
-//    protected $primaryKey = 'slug';
+    protected $primaryKey = 'slug';
 
     /**
      * Changing auto increment key
@@ -53,7 +53,7 @@ class Post extends Model
      * default: Y-m-d H:i:s
      * custom
      */
-    protected $dateFormat = 'U';
+//    protected $dateFormat = 'U';
 
     /**
      * Customize names of timestamps
@@ -73,7 +73,7 @@ class Post extends Model
      */
     protected $attributes = [
         "user_id" => 1,
-        "is_published" => false,
+//        "is_published" => false,
         "content" => "Please add content"
     ];
 
@@ -84,5 +84,5 @@ class Post extends Model
      * here we defined sqlite to be used as database connection only for this model
      * and not to other model.
      */
-    protected $connection = 'sqlite';
+//    protected $connection = 'sqlite';
 }
