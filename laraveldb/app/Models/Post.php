@@ -23,7 +23,7 @@ class Post extends Model
      * here we use slug as custom primary key
      * when using ID to find certain row it will return null since we use slug as primary key
      */
-    protected $primaryKey = 'slug';
+//    protected $primaryKey = 'id';
 
     /**
      * Changing auto increment key

@@ -9,27 +9,30 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 52. retrieve single models
+     *
+     * find method used to retrieve specific row using primary key
+     *
+     * first() - used to return row based on condition.
+     *
+     * firstWhere() - used to return row based on custom attr.
+     *
+     * findOrFail - used to return a row but throws exception if not found.
      */
     public function index()
     {
-        /**
-         * 51. Build Querie
-         *
-         * where() - allows flexibility, readability and scalability
-         *
-         */
-        $posts = Post::where('is_published', true)
-            ->where('min_to_read', '>', 5)
-            ->orderBy('title', 'DESC')
-            ->get()
-//            ->count()
-//            ->cursorPaginate(5)
+//        $post = Post::firstWhere(
+//                'slug',
+//                'sint-sapiente-similique-culpa-debitis-qui'
+//            )
+//        ;
+//        $post = Post::findOrFail(103)
+            $post = Post::where('slug', 'molestias-ex-dignissimos-et-itaque-numquam-vero')
+                ->firstOrFail()
         ;
 
-        echo '<pre>';
-        echo json_encode($posts, JSON_PRETTY_PRINT);
-        echo '</pre>';
+
+        return $this->readData($post);
     }
 
     /**
@@ -49,11 +52,21 @@ class PostsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 52. retrieve single models
+     *
+     * find method used to retrieve specific row using primary key
+     *
+     * first() - used to return row based on condition.
+     *
+     * firstWhere() - used to return row based on custom attr.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $post = Post::where('slug', $slug)
+            ->firstOrFail()
+        ;
+
+        return $post;
     }
 
     /**
@@ -78,5 +91,9 @@ class PostsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function readData(object $data): string {
+        return '<pre>' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
     }
 }
