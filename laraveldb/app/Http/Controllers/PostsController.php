@@ -61,16 +61,39 @@ class PostsController extends Controller
 
         foreach ($posts AS $post) {
             $postDb = new Post;
-            $postDb->user_id = $post['user_id'];
-            $postDb->content = $post['content'];
-            $postDb->title = $post['title'];
-            $postDb->slug = $post['slug'];
-            $postDb->excerpt = $post['excerpt'];
-            $postDb->is_published = $post['is_published'];
-            $postDb->min_to_read = $post['min_to_read'];
+//using create method, we don't need save() when using create()
+            $postDb->create([
+                'user_id' => $post['user_id'],
+                'content' => $post['content'],
+                'title' => $post['title'],
+                'slug' => $post['slug'],
+                'excerpt' => $post['excerpt'],
+                'is_published' => $post['is_published'],
+                'min_to_read' => $post['min_to_read']
+            ]);
 
-            //inserting data
-            $postDb->save();
+            //using fill
+//            $postDb->fill([
+//                'user_id' => $post['user_id'],
+//                'content' => $post['content'],
+//                'title' => $post['title'],
+//                'slug' => $post['slug'],
+//                'excerpt' => $post['excerpt'],
+//                'is_published' => $post['is_published'],
+//                'min_to_read' => $post['min_to_read']
+//            ]);
+
+// using normal model key binding.
+//            $postDb->user_id = $post['user_id'];
+//            $postDb->content = $post['content'];
+//            $postDb->title = $post['title'];
+//            $postDb->slug = $post['slug'];
+//            $postDb->excerpt = $post['excerpt'];
+//            $postDb->is_published = $post['is_published'];
+//            $postDb->min_to_read = $post['min_to_read'];
+//
+            //We do not use save on create method.
+//            $postDb->save();
         }
     }
 
