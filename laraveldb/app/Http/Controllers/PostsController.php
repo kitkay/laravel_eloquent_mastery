@@ -9,30 +9,69 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     * 52. retrieve single models
+     *  53. insert creating models
      *
-     * find method used to retrieve specific row using primary key
+     * model instance refers to an instance of a model class which is
+     * a representation of a database table.
      *
-     * first() - used to return row based on condition.
-     *
-     * firstWhere() - used to return row based on custom attr.
-     *
-     * findOrFail - used to return a row but throws exception if not found.
+     * it is recommended that we use model instance
+     * in Laravel as proper practice
      */
     public function index()
     {
-//        $post = Post::firstWhere(
-//                'slug',
-//                'sint-sapiente-similique-culpa-debitis-qui'
-//            )
-//        ;
-//        $post = Post::findOrFail(103)
-            $post = Post::where('slug', 'molestias-ex-dignissimos-et-itaque-numquam-vero')
-                ->firstOrFail()
-        ;
+        $posts = [
+            [
+                'user_id' => 5,
+                'content' => 'User ID 5 content',
+                'title' => 'User ID 5',
+                'slug' => 'user-id-5',
+                'excerpt' => 'excerpt 5',
+                'is_published' => true,
+                'min_to_read' => 5,
+            ],
+            [
+                'user_id' => 3,
+                'content' => 'User ID 3 content',
+                'title' => 'User ID 3',
+                'slug' => 'user-id-3',
+                'excerpt' => 'excerpt 3',
+                'is_published' => true,
+                'min_to_read' => 5,
+            ],
+            [
+                'user_id' => 9,
+                'content' => 'User ID 9 content',
+                'title' => 'User ID 9',
+                'slug' => 'user-id-9',
+                'excerpt' => 'excerpt 9',
+                'is_published' => true,
+                'min_to_read' => 9,
+            ],
+            [
+                'user_id' => 10,
+                'content' => 'User ID 10 content',
+                'title' => 'User ID 10',
+                'slug' => 'user-id-10',
+                'excerpt' => 'excerpt 10',
+                'is_published' => true,
+                'min_to_read' => 5,
+            ],
 
+        ];
 
-        return $this->readData($post);
+        foreach ($posts AS $post) {
+            $postDb = new Post;
+            $postDb->user_id = $post['user_id'];
+            $postDb->content = $post['content'];
+            $postDb->title = $post['title'];
+            $postDb->slug = $post['slug'];
+            $postDb->excerpt = $post['excerpt'];
+            $postDb->is_published = $post['is_published'];
+            $postDb->min_to_read = $post['min_to_read'];
+
+            //inserting data
+            $postDb->save();
+        }
     }
 
     /**
@@ -52,21 +91,10 @@ class PostsController extends Controller
     }
 
     /**
-     * 52. retrieve single models
      *
-     * find method used to retrieve specific row using primary key
-     *
-     * first() - used to return row based on condition.
-     *
-     * firstWhere() - used to return row based on custom attr.
      */
     public function show(string $slug)
     {
-        $post = Post::where('slug', $slug)
-            ->firstOrFail()
-        ;
-
-        return $post;
     }
 
     /**

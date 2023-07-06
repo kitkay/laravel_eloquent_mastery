@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-
-    /**
-     * 51. Builder Queries
-     */
     protected $fillable = [];
 
     protected $guarded = []; //means allow all attr for mass assignment
