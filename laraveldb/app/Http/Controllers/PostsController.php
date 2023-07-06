@@ -9,92 +9,36 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  53. insert creating models
+     *  54. retrieve all models
      *
-     * model instance refers to an instance of a model class which is
-     * a representation of a database table.
+     *  all() - disadvantage is performance and memory consumption
+     *          not advice if we have large amount of data.
+     *          also slower query.
      *
-     * it is recommended that we use model instance
-     * in Laravel as proper practice
+     *  to solve all() issue, we then use paginate()
      */
     public function index()
     {
-        $posts = [
-            [
-                'user_id' => 5,
-                'content' => 'User ID 5 content',
-                'title' => 'User ID 5',
-                'slug' => 'user-id-5',
-                'excerpt' => 'excerpt 5',
-                'is_published' => true,
-                'min_to_read' => 5,
-            ],
-            [
-                'user_id' => 3,
-                'content' => 'User ID 3 content',
-                'title' => 'User ID 3',
-                'slug' => 'user-id-3',
-                'excerpt' => 'excerpt 3',
-                'is_published' => true,
-                'min_to_read' => 5,
-            ],
-            [
-                'user_id' => 9,
-                'content' => 'User ID 9 content',
-                'title' => 'User ID 9',
-                'slug' => 'user-id-9',
-                'excerpt' => 'excerpt 9',
-                'is_published' => true,
-                'min_to_read' => 9,
-            ],
-            [
-                'user_id' => 10,
-                'content' => 'User ID 10 content',
-                'title' => 'User ID 10',
-                'slug' => 'user-id-10',
-                'excerpt' => 'excerpt 10',
-                'is_published' => true,
-                'min_to_read' => 5,
-            ],
+//        'user_id' => $post['user_id'],
+//        'content' => $post['content'],
+//        'title' => $post['title'],
+//        'slug' => $post['slug'],
+//        'excerpt' => $post['excerpt'],
+//        'is_published' => $post['is_published'],
+//        'min_to_read' => $post['min_to_read']
 
-        ];
+        //Using all()
+//        return Post::all()->count();
 
-        foreach ($posts AS $post) {
-            $postDb = new Post;
-//using create method, we don't need save() when using create()
-            $postDb->create([
-                'user_id' => $post['user_id'],
-                'content' => $post['content'],
-                'title' => $post['title'],
-                'slug' => $post['slug'],
-                'excerpt' => $post['excerpt'],
-                'is_published' => $post['is_published'],
-                'min_to_read' => $post['min_to_read']
-            ]);
+        //using paginate()
+//        return Post::paginate(5)->count();
 
-            //using fill
-//            $postDb->fill([
-//                'user_id' => $post['user_id'],
-//                'content' => $post['content'],
-//                'title' => $post['title'],
-//                'slug' => $post['slug'],
-//                'excerpt' => $post['excerpt'],
-//                'is_published' => $post['is_published'],
-//                'min_to_read' => $post['min_to_read']
-//            ]);
+        //alternative, simplePaginate() or cursorPaginate
+        return Post::cursorPaginate(5)->toArray();
 
-// using normal model key binding.
-//            $postDb->user_id = $post['user_id'];
-//            $postDb->content = $post['content'];
-//            $postDb->title = $post['title'];
-//            $postDb->slug = $post['slug'];
-//            $postDb->excerpt = $post['excerpt'];
-//            $postDb->is_published = $post['is_published'];
-//            $postDb->min_to_read = $post['min_to_read'];
-//
-            //We do not use save on create method.
-//            $postDb->save();
-        }
+        //Using DB::table
+//        return DB::table('posts')->get()->count();
+
     }
 
     /**

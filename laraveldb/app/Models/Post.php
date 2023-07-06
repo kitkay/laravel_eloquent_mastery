@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static cursorPaginate(int $int)
+ * @method static simplePaginate(int $int)
+ */
 class Post extends Model
 {
     use HasFactory;
