@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\CursorPaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
@@ -34,7 +37,7 @@ class PostsController extends Controller
 //        return Post::paginate(5)->count();
 
         //alternative, simplePaginate() or cursorPaginate
-        return Post::cursorPaginate(5)->toArray();
+        return $this->readData(Post::cursorPaginate(5));
 
         //Using DB::table
 //        return DB::table('posts')->get()->count();
@@ -88,7 +91,9 @@ class PostsController extends Controller
         //
     }
 
-    private function readData(object $data): string {
-        return '<pre>' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>';
+    private function readData(LengthAwarePaginator $data) {
+        return '<pre>'
+            . json_encode($data, JSON_PRETTY_PRINT)
+            . '</pre>';
     }
 }
