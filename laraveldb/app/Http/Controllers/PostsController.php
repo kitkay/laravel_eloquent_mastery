@@ -12,35 +12,48 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  54. retrieve all models
+     *  55. firstOrCreate and firstOrNew
      *
-     *  all() - disadvantage is performance and memory consumption
-     *          not advice if we have large amount of data.
-     *          also slower query.
+     *  - both used to create new data but could be slower
+     *  - due to checking if row already existed.
      *
-     *  to solve all() issue, we then use paginate()
+     * firstOrCreate - attempts to retrieve data from database before creating
+     * firstOrNew - checks if the record exists or creates a new one if it doesn't
+     *              we need to manually save data here.
+     *
+     * -both slower for complex queries.
      */
     public function index()
     {
-//        'user_id' => $post['user_id'],
-//        'content' => $post['content'],
-//        'title' => $post['title'],
-//        'slug' => $post['slug'],
-//        'excerpt' => $post['excerpt'],
-//        'is_published' => $post['is_published'],
-//        'min_to_read' => $post['min_to_read']
+//        return Post::firstOrCreate(
+//            [
+//                'title' => 'New title for firstOrCreate',
+//            ],
+//            [
+//                'user_id' => 5,
+//                'title' => 'New title for firstOrCreate',
+//                'slug' => 'new-title-for-first-or-create',
+//                'excerpt' => 'new excerpt',
+//                'content' => 'excerpt content',
+//                'is_published' => true,
+//                'min_to_read' => 3
+//            ]
+//        );
 
-        //Using all()
-//        return Post::all()->count();
-
-        //using paginate()
-//        return Post::paginate(5)->count();
-
-        //alternative, simplePaginate() or cursorPaginate
-        return $this->readData(Post::cursorPaginate(5));
-
-        //Using DB::table
-//        return DB::table('posts')->get()->count();
+        return Post::firstOrNew(
+            [
+                'title' => 'New title for firstOrCreate',
+            ],
+            [
+                'user_id' => 9,
+                'title' => 'New title for firstOrCreate News 9',
+                'slug' => 'new-title-for-first-or-create-news-9',
+                'excerpt' => 'new excerpt',
+                'content' => 'excerpt content',
+                'is_published' => true,
+                'min_to_read' => 3
+            ]
+        );
 
     }
 

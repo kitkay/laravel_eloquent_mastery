@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method static cursorPaginate(int $int)
  * @method static simplePaginate(int $int)
+ * @method static firstOrCreate()
+ * @method static firstOrNew(string[] $array, array $array1)
  */
 class Post extends Model
 {
