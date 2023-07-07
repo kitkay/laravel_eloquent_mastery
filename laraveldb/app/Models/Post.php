@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static simplePaginate(int $int)
  * @method static firstOrCreate()
  * @method static firstOrNew(string[] $array, array $array1)
+ * @method static find(int $int)
  */
 class Post extends Model
 {

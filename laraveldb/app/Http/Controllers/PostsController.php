@@ -12,22 +12,41 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  56. updating models or updating data.
+     *  57. Attribute Changes isDirty, isClean, wasChanged
+     *
+     * very helpful when working on models and want to track changes to attributes
+     *
+     * isDirty checks if data from DB has been changed from our end, but still
+     *  needs to save() in order to persist on our DB.
+     *
+     * isClean() - opposite of isDirty()
+     *
+     * wasChanged - returns bool, if row is changed or not
+     *  useful when prompting users before leaving the page.
      */
     public function index()
     {
+        $post = Post::find(105);
 
-        Post::where('id', 105)->update([
-          "title" => "just updated",
-          "slug" => "just-updated"
-        ]);
+        $post->title = "Let's see if isDirty() works";
 
-//        $post = Post::find(105);
-//        $post->user_id = 9;
-//        $post->title = 'Updated title for ID 105';
-//        $post->slug = 'updated-title-for-id-105';
-//        $post->save();
-//        return $post;
+        //passing an array is possible but would return true when one on the array is modified.
+//        return $post->isDirty('title');
+
+        //using if isDirty is a shorthand
+//        if ($post->getOriginal('title') !== $post->title){
+//        if ($post->isDirty('title')){
+//            echo "Title has been changed";
+//        } else {
+//            echo "Title has NOT been changed";
+//        }
+//        return $post->isClean();
+
+        if($post->wasChanged('title')) {
+            echo "Title has been changed";
+        } else {
+            echo "Title has NOT been changed";
+        }
     }
 
     /**
