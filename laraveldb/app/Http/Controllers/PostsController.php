@@ -12,49 +12,22 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  55. firstOrCreate and firstOrNew
-     *
-     *  - both used to create new data but could be slower
-     *  - due to checking if row already existed.
-     *
-     * firstOrCreate - attempts to retrieve data from database before creating
-     * firstOrNew - checks if the record exists or creates a new one if it doesn't
-     *              we need to manually save data here.
-     *
-     * -both slower for complex queries.
+     *  56. updating models or updating data.
      */
     public function index()
     {
-//        return Post::firstOrCreate(
-//            [
-//                'title' => 'New title for firstOrCreate',
-//            ],
-//            [
-//                'user_id' => 5,
-//                'title' => 'New title for firstOrCreate',
-//                'slug' => 'new-title-for-first-or-create',
-//                'excerpt' => 'new excerpt',
-//                'content' => 'excerpt content',
-//                'is_published' => true,
-//                'min_to_read' => 3
-//            ]
-//        );
 
-        return Post::firstOrNew(
-            [
-                'title' => 'New title for firstOrCreate',
-            ],
-            [
-                'user_id' => 9,
-                'title' => 'New title for firstOrCreate News 9',
-                'slug' => 'new-title-for-first-or-create-news-9',
-                'excerpt' => 'new excerpt',
-                'content' => 'excerpt content',
-                'is_published' => true,
-                'min_to_read' => 3
-            ]
-        );
+        Post::where('id', 105)->update([
+          "title" => "just updated",
+          "slug" => "just-updated"
+        ]);
 
+//        $post = Post::find(105);
+//        $post->user_id = 9;
+//        $post->title = 'Updated title for ID 105';
+//        $post->slug = 'updated-title-for-id-105';
+//        $post->save();
+//        return $post;
     }
 
     /**
@@ -104,7 +77,8 @@ class PostsController extends Controller
         //
     }
 
-    private function readData(LengthAwarePaginator $data) {
+    private function readData(LengthAwarePaginator $data)
+    {
         return '<pre>'
             . json_encode($data, JSON_PRETTY_PRINT)
             . '</pre>';
