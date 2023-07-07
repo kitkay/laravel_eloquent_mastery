@@ -12,41 +12,50 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  57. Attribute Changes isDirty, isClean, wasChanged
+     *  58. UpdateOrCreate and Upserting Models
      *
-     * very helpful when working on models and want to track changes to attributes
+     *  updateOrCreate() - best use is when creating API
+     *                     if we wanted to update a post
+     *                     or create if it still doesn't exist.
      *
-     * isDirty checks if data from DB has been changed from our end, but still
-     *  needs to save() in order to persist on our DB.
-     *
-     * isClean() - opposite of isDirty()
-     *
-     * wasChanged - returns bool, if row is changed or not
-     *  useful when prompting users before leaving the page.
+     * upsert()
      */
     public function index()
     {
-        $post = Post::find(105);
+//        $post = Post::updateOrCreate(
+//            [
+//                'id' => 1
+//            ],
+//            [
+//                'user_id' => 5,
+//                'title' => 'Five 8 branch for one',
+//                'slug' => 'five-8-branch-for-one',
+//                'excerpt' => '58 branch',
+//                'content' => 'This is an updated content from 58',
+//                'is_published' => false,
+//                'min_to_read' => 5,
+//            ]
+//        );
 
-        $post->title = "Let's see if isDirty() works";
-
-        //passing an array is possible but would return true when one on the array is modified.
-//        return $post->isDirty('title');
-
-        //using if isDirty is a shorthand
-//        if ($post->getOriginal('title') !== $post->title){
-//        if ($post->isDirty('title')){
-//            echo "Title has been changed";
-//        } else {
-//            echo "Title has NOT been changed";
-//        }
-//        return $post->isClean();
-
-        if($post->wasChanged('title')) {
-            echo "Title has been changed";
-        } else {
-            echo "Title has NOT been changed";
-        }
+        //Upsert
+        $post = Post::upsert(
+            [
+                'id' => 125,
+                'user_id' => 5,
+                'title' => 'Upserting Data',
+                'slug' => 'upserting-data',
+                'excerpt' => 'upsert data',
+                'content' => 'Upserting!!',
+                'is_published' => true,
+                'min_to_read' => 5,
+            ],
+            [
+                //Params here means we find by ID without
+                //setting ID to a value just to find.
+                'id'
+            ]
+        );
+        return $post;
     }
 
     /**

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static firstOrCreate()
  * @method static firstOrNew(string[] $array, array $array1)
  * @method static find(int $int)
+ * @method static updateOrCreate(int[] $array, array $array1)
+ * @method static upsert(array $array, array $array1)
  */
 class Post extends Model
 {
