@@ -12,7 +12,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+//         $schedule->command('inspire')->hourly();
+        //With this settings, this will be triggered daily
+        //This is a great way to remove data as outdated.
+         $schedule->command('model:prune')->daily();
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -16,15 +18,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static upsert(array $array, array $array1)
  * @method static truncate()
  * @method static latest()
+ * @method static where(string $string, string $string1, \Illuminate\Support\Carbon $subMonth)
  */
 class Post extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Prunable;
     protected $fillable = [];
 
     protected $guarded = []; //means allow all attr for mass assignment
 
     protected $table = 'posts';
+
+    public function prunable(): Builder
+    {
+        //Simple we remove soft deleted data with a month ago
+        //It will automatically clean it up on the database.
+        //For this to work we need to setup scheduler.
+        //Scheduler BTW runs on background.
+        return static::where(
+            'deleted_at',
+            '<=',
+            now()->subMonth()
+        );
+    }
 
     /**
      * Changing the primary key - like making a custom primary key
