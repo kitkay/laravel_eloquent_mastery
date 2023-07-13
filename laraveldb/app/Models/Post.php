@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static cursorPaginate(int $int)
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $fillable = [];
 
     protected $guarded = []; //means allow all attr for mass assignment
@@ -65,8 +66,8 @@ class Post extends Model
     /**
      * Customize names of timestamps
      */
-    const CREATED_AT = 'date_created_at';
-    const UPDATED_AT = 'date_update_at';
+//    const CREATED_AT = 'date_created_at';
+//    const UPDATED_AT = 'date_update_at';
 
     /**
      * Set default attr. values

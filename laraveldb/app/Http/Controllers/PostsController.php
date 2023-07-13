@@ -16,23 +16,12 @@ class PostsController extends Controller
      */
     public function index()
     {
-//        $post = Post::find(108);
+//        $post = Post::find(107);
 //        return $post->delete();
 
-        //Delete all records on a table
-//        Post::truncate();
-
-//        $post = Post::latest('created_at')
-//            ->get();
-
-        //Destroy() used to delete multiple records from a table
-        return Post::destroy([
-            122,
-            123,
-            124,
-            125,
-            126
-        ]);
+        //returning post including softdeleted
+        $post = Post::withTrashed()->get();
+        return $post;
     }
 
     /**
