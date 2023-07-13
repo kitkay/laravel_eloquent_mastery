@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static find(int $int)
  * @method static updateOrCreate(int[] $array, array $array1)
  * @method static upsert(array $array, array $array1)
+ * @method static truncate()
+ * @method static latest()
  */
 class Post extends Model
 {
@@ -50,7 +52,7 @@ class Post extends Model
      * Disabling created_at and updated_at cols
      * tells eloquent to not touch created_at and updated_at when new row is created
      */
-    public $timestamps = false;
+//    public $timestamps = false;
 
     /**
      * Custom format models timestamp
