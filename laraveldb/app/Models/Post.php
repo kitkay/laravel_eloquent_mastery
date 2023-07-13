@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static truncate()
  * @method static latest()
  * @method static where(string $string, string $string1, \Illuminate\Support\Carbon $subMonth)
+ * @method static create(array $data)
  */
 class Post extends Model
 {

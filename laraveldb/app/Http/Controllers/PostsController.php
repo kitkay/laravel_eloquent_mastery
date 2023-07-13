@@ -16,22 +16,24 @@ class PostsController extends Controller
      */
     public function index()
     {
-//        $post = Post::find(107);
-//        return $post->delete();
+        $data = [
+            'user_id' => 5,
+            "title" => "Replicate",
+            "slug" => "replicate",
+            "excerpt" => 'this is about replication',
+            "content" => "replication content",
+            "is_published" => true,
+            "min_to_read" => 10
+        ];
 
-        //returning post including softdeleted
-//        $post = Post::withTrashed()->get();
+//        $post = Post::create($data);
 
-        //Returning the soft deleted data.
-//        $post = Post::withTrashed()
-//            ->where('id', 107)
-//            ->restore();
-
-        //Permanently delete
-//        $post = Post::withTrashed()->find(107);
-//        $post->forceDelete();
-
-        return $post;
+        //TO avoid duplication change the columns that prevents
+        //for duplication, for us its title and slug
+        return Post::find(131)->replicate()->fill([
+            "title" => "Replicated!!",
+            "slug" => "replicated"
+        ])->save();
     }
 
     /**
