@@ -20,7 +20,17 @@ class PostsController extends Controller
 //        return $post->delete();
 
         //returning post including softdeleted
-        $post = Post::withTrashed()->get();
+//        $post = Post::withTrashed()->get();
+
+        //Returning the soft deleted data.
+//        $post = Post::withTrashed()
+//            ->where('id', 107)
+//            ->restore();
+
+        //Permanently delete
+//        $post = Post::withTrashed()->find(107);
+//        $post->forceDelete();
+
         return $post;
     }
 
