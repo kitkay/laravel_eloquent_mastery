@@ -12,28 +12,13 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  59. Deleting models simple way of deleting models
+     *  63. Global Scopes
+     *      powerful feature or eloquent that allows us
+     *      to add constraints to all queries that runs against
+     *      a particular model.
      */
     public function index()
     {
-        $data = [
-            'user_id' => 5,
-            "title" => "Replicate",
-            "slug" => "replicate",
-            "excerpt" => 'this is about replication',
-            "content" => "replication content",
-            "is_published" => true,
-            "min_to_read" => 10
-        ];
-
-//        $post = Post::create($data);
-
-        //TO avoid duplication change the columns that prevents
-        //for duplication, for us its title and slug
-        return Post::find(131)->replicate()->fill([
-            "title" => "Replicated!!",
-            "slug" => "replicated"
-        ])->save();
     }
 
     /**
