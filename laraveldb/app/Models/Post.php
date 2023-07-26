@@ -32,7 +32,7 @@ class Post extends Model
 
     public function prunable(): Builder
     {
-        //Simple we remove soft deleted data with a month ago
+        //Simply we remove soft deleted data with a month ago
         //It will automatically clean it up on the database.
         //For this to work we need to setup scheduler.
         //Scheduler BTW runs on background.
