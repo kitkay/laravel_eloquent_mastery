@@ -24,7 +24,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory, SoftDeletes, Prunable;
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id', 'title', 'slug', 'excerpt', 'content', 'min_to_read', 'is_published'
+    ];
 
     protected $guarded = []; //means allow all attr for mass assignment
 
