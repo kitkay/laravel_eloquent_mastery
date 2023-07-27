@@ -12,10 +12,18 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     /**
-     *  63. Global Scopes
+     *  64. Global Scopes
      *      powerful feature or eloquent that allows us
      *      to add constraints to all queries that runs against
      *      a particular model.
+     *
+     *      Local scopes are a powerful feature in eloquent that enables us to define
+     *      a set of reusable queries on our models
+     *
+     *      Also local scopes provide a way to encapsulate a query into a method on a model
+     *      and enable us to write more concise and expressive codes. It could help us modify code
+     *      easily overtime in a query logic in one simple location. It could also be used
+     *      to create complex queries.
      */
     public function index()
     {

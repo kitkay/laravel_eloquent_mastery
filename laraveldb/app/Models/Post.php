@@ -26,13 +26,6 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes, Prunable;
 
-    protected static function booted(): void
-    {
-        //Anything that run in this model would definitely add this constraint
-        // If we do not access this constraint the just use Model::withoutGlobalScopes()->get();
-        static::addGlobalScope(new PublishWithinThirtyDaysScope());
-    }
-
     protected $fillable = [
         'user_id', 'title', 'slug', 'excerpt', 'content', 'min_to_read', 'is_published'
     ];
@@ -40,6 +33,41 @@ class Post extends Model
     protected $guarded = []; //means allow all attr for mass assignment
 
     protected $table = 'posts';
+
+    // branch 64
+//    protected static function booted(): void
+//    {
+    //Anything that run in this model would definitely add this constraint
+    // If we do not access this constraint the just use Model::withoutGlobalScopes()->get();
+//        static::addGlobalScope(new PublishWithinThirtyDaysScope());
+//    }
+
+    /**
+     * Local scopes only has on param which is Builder
+     *
+     * Also, we could access this scope directly by just removing its prefix
+     * e.g. scopePublished, then access using published() directly.
+     *
+     * @param Builder $builder
+     *
+     * @return Builder
+     */
+    public function scopePublished(Builder $builder): Builder
+    {
+        return $builder->where('is_published', false);
+    }
+
+    public function scopeWithUserData(Builder $builder)
+    {
+        return $builder->join(
+            'users',
+            'posts.user_id',
+            '=',
+            'users.id'
+        )->select(
+            'posts.*', 'users.name', 'users.email'
+        );
+    }
 
     public function prunable(): Builder
     {
