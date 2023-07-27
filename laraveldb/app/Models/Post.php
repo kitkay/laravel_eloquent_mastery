@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\PublishWithinThirtyDaysScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory, SoftDeletes, Prunable;
+
+    protected static function booted(): void
+    {
+        //Anything that run in this model would definitely add this constraint
+        // If we do not access this constraint the just use Model::withoutGlobalScopes()->get();
+        static::addGlobalScope(new PublishWithinThirtyDaysScope());
+    }
+
     protected $fillable = [
         'user_id', 'title', 'slug', 'excerpt', 'content', 'min_to_read', 'is_published'
     ];
