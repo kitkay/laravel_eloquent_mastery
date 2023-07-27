@@ -28,6 +28,10 @@ class PostsController extends Controller
      *  65. Dynamic Scopes
      *      allow us to specify the conditions that we want to filter by.
      *      this also allow us to filter without hassle of adding or modifying code we wrote.
+     *
+     *  66. Trait to store scopes
+     *      sharing class functionalities and avoid code duplication
+     *      use for maintainability. Cannot be instantiated on their own.
      */
     public function index()
     {
