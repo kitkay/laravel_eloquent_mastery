@@ -69,6 +69,18 @@ class Post extends Model
         );
     }
 
+    /**
+     * Dynamic scopes
+     * Advantage is that we could filter result in an easy and efficient way.
+     */
+    public function scopePublishedByUser(
+        Builder $builder,
+        int $userId
+    ): Builder {
+        return $builder->where('user_id', $userId)
+            ->whereNotNull('created_at');
+    }
+
     public function prunable(): Builder
     {
         //Simply we remove soft deleted data with a month ago
