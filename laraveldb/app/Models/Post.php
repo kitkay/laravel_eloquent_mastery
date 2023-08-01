@@ -26,6 +26,15 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes, Prunable, PostScopes;
 
+    /**
+     * Relationships refer to the connections between different entities in a database
+     *
+     * it is used to organized and manage data effectively, easier to access data
+     *
+     * cons - can be complex to set up for many tables and can lead to slower data operations
+     * unless manage correctly
+     */
+
     protected $fillable = [
         'user_id', 'title', 'slug', 'excerpt', 'content', 'min_to_read', 'is_published'
     ];
