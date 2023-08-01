@@ -62,6 +62,7 @@ class User extends Authenticatable
      */
     public function contact(): HasOne
     {
-        return $this->hasOne(Contact::class); //Refer to current instance of the model
+        //Refer to current instance of the model
+        return $this->hasOne(Contact::class);
     }
 }
