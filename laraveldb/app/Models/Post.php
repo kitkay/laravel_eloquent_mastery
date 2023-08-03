@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -137,4 +138,24 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Tag::class
+        );
+    }
+
+    /**
+     * attach() is used to insert data into the pivot table
+     * where it will associate the post with tags with the given ids
+     * e.g $post->tags()->attach(array $Ids)
+     *
+     * detach() is used to remove data from
+     * many-to-many relationship
+     *
+     * e.g $post->tags()->detach(array $Ids) - remove all id indicated
+     * e.g $post->tags()->detach() - remove all
+     * e.g $post->tags()->detach(1) - remove single id or specific id.
+     */
 }
