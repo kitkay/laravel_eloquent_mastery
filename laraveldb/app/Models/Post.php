@@ -139,6 +139,10 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Many-to-many relationship would create an intermediate tabl
+     * @return BelongsToMany
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -160,5 +164,14 @@ class Post extends Model
      *
      * updateExistingPivot() - allows you to update a single
      * record on the intermediate table
+     * it has 2 params
+     *      $paramOne - id of the table being used in our case Tag()
+     *      $paramTwo - array passing key value
+     *     e.g. ['id_col_in_intermediate_tbl' => (int)id to use fr tag tbl]
+     *
+     * now, creating a single tag to several posts
+     *  we do create $postIds = [idsOfPost];
+     *  $tag = Tag::find(idOfTagToinsertToPost)
+     *  $tag->posts()->attach($postIds);
      */
 }
