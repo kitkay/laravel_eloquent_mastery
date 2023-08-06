@@ -173,5 +173,9 @@ class Post extends Model
      *  we do create $postIds = [idsOfPost];
      *  $tag = Tag::find(idOfTagToinsertToPost)
      *  $tag->posts()->attach($postIds);
+     *
+     * Eager loading - loading all necessary data in advance.
+     * better use when collecting data from other model for related use.
+     * Model::with('tblName')->get();
      */
 }
