@@ -157,5 +157,8 @@ class Post extends Model
      * e.g $post->tags()->detach(array $Ids) - remove all id indicated
      * e.g $post->tags()->detach() - remove all
      * e.g $post->tags()->detach(1) - remove single id or specific id.
+     *
+     * updateExistingPivot() - allows you to update a single
+     * record on the intermediate table
      */
 }

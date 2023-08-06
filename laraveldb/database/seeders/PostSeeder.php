@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
@@ -18,16 +19,17 @@ class PostSeeder extends Seeder
         $posts = collect(json_decode($json));
 
         /**
-         * We could use foreach loop but since its a collection
+         * We could use foreach loop but since it's a collection
          * we could use ->each() looping all over posts
          */
         $posts->each(function ($post) {
             // Downside of insert, it won't add timestamp for created_at updated_at
             // Post::insert($post);
             // Instead use
+            $user = new User();
             Post::create([
                 'title' => $post->title,
-                'user_id' => $post->user_id,
+                'user_id' => $user->all()->random()->id,
                 'slug' => $post->slug,
                 'excerpt' => $post->excerpt,
                 'content' => $post->content,
