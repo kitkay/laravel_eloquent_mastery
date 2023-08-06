@@ -177,5 +177,14 @@ class Post extends Model
      * Eager loading - loading all necessary data in advance.
      * better use when collecting data from other model for related use.
      * Model::with('tblName')->get();
+     *
+     * HasOneThrough() - allows you to define a direct association between
+     * two models through a third intermediate model.
+     * - useful when use to access intermediate model to retrieve
+     *   the data of the second model.
+     *   if two models is indirectly connected by an intermediate model
+     *      that connects them.
+     *  e.g a user has a company number but in order to get it you need to
+     *  use user then access company to get its number.
      */
 }

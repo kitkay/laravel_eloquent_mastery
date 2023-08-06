@@ -7,6 +7,7 @@ use App\Models\Scopes\BalanceVerifiedScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -75,5 +76,30 @@ class User extends Authenticatable
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * @return HasOneThrough
+     */
+    public function companyPhoneNumber(): HasOneThrough
+    {
+        /**
+         * 1st Param - Model className: relationship owner
+         * 2nd Param - Model className: joining table
+         * 3rd Param - foreignKey of 2nd Param that
+         *              connects to 1st Param
+         * 4th Param - foreignKey of 2nd Param
+         *              connects to 1st Param
+         * 5th Param - local key 1st Param
+         * 6th Param - local key 2nd Param
+         */
+        return $this->hasOneThrough(
+            PhoneNumber::class,
+            Company::class,
+            'user_id',
+            'company_id',
+            'id',
+            'id'
+        );
     }
 }
