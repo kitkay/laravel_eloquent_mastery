@@ -186,5 +186,8 @@ class Post extends Model
      *      that connects them.
      *  e.g a user has a company number but in order to get it you need to
      *  use user then access company to get its number.
+     *
+     *    user has no direct access to phonenumber but company has
+     *    so: user(id) <- company(user_id), company(id) -> phone#(company_id)
      */
 }

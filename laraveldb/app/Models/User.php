@@ -102,4 +102,26 @@ class User extends Authenticatable
             'id'
         );
     }
+
+    /**
+     * Has One of Many
+     * useful whenretrieving the latest or oldest of the user post
+     * condition is: if a user has many post or jobs save
+     *  then latest or oldest will be applicable since use has many
+     *  jobs or post, that is why "has one of many"
+     *
+     * latestOfMany - return latest job of many user
+     *
+     * @return HasOne
+     */
+    public function latestJob(): HasOne
+    {
+        return $this->hasOne(Job::class)->latestOfMany();
+    }
+
+    public function oldestJob(): HasOne
+    {
+        return $this->hasOne(Job::class)->oldestOfMany();
+    }
+
 }
