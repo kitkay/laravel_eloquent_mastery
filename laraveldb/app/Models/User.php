@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -122,6 +123,29 @@ class User extends Authenticatable
     public function oldestJob(): HasOne
     {
         return $this->hasOne(Job::class)->oldestOfMany();
+    }
+
+    /**
+     * Relationship to Image Model
+     * accepting the morph for one to one
+     *
+     * Param 1 - The model that allows morphing
+     * Param 2 - name of the method from Param 1 that allows to morph
+     *
+     * Note: we could access this by:
+     *      example
+     *      $user->image()->create([]) - when creating
+     *      access it
+     *      $user->image;
+     *
+     * @return MorphOne
+     */
+    public function image(): MorphOne
+    {
+        return $this->morphOne(
+            Image::class,
+            'imageable'
+        );
     }
 
 }

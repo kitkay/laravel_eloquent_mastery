@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -147,6 +148,32 @@ class Post extends Model
     {
         return $this->belongsToMany(
             Tag::class
+        );
+    }
+
+    /**
+     * Relationship to Image Model
+     * accepting the morph for one to one
+     *
+     * using whereHas() - use to query correlated models
+     *      that meet certain condition.
+     *
+     * example usage
+     *  $postWithImages = Post::whereHas('image', function($query) {
+     *       $query->where(
+     *            'url',
+     *            'like',
+     *            '%example.com%'
+     *        );
+     *  })->get();
+     *
+     * @return MorphOne
+     */
+    public function image(): MorphOne
+    {
+        return $this->morphOne(
+            Image::class,
+            'imageable'
         );
     }
 
