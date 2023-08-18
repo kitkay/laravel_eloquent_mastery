@@ -148,4 +148,14 @@ class User extends Authenticatable
         );
     }
 
+    public function latestImage(): MorphOne
+    {
+        return $this->image()->latestOfMany();
+    }
+
+    public function oldestImage(): MorphOne
+    {
+        return $this->image()->oldestOfMany();
+    }
+
 }
