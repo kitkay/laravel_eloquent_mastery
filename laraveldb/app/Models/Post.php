@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -174,6 +175,14 @@ class Post extends Model
         return $this->morphOne(
             Image::class,
             'imageable'
+        );
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(
+            Comment::class,
+            'commentable'
         );
     }
 
