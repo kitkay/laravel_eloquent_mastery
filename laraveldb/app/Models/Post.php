@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -142,7 +143,8 @@ class Post extends Model
     }
 
     /**
-     * Many-to-many relationship would create an intermediate tabl
+     * Many-to-many relationship would create an intermediate table
+     *  or intermediary table which in our case post_tag tbl
      * @return BelongsToMany
      */
     public function tags(): BelongsToMany
@@ -151,6 +153,8 @@ class Post extends Model
             Tag::class
         );
     }
+
+
 
     /**
      * Relationship to Image Model
@@ -183,6 +187,22 @@ class Post extends Model
         return $this->morphMany(
             Comment::class,
             'commentable'
+        );
+    }
+
+    /**
+     * Many-to-Many polymorphic relationship
+     *
+     * to add tags to post as
+     *
+     *
+     * @return MorphToMany
+     */
+    public function tagsMany(): MorphToMany
+    {
+        return $this->morphToMany(
+            Tag::class,
+            'taggable'
         );
     }
 
