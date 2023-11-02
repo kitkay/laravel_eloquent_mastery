@@ -8,6 +8,13 @@
       <sourceFolder url="file://$MODULE_DIR$/laraveldb/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/laraveldb/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/laraveldb/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/LaravelBlog/tests/Unit" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/dflydev/dot-access-data" />
@@ -121,6 +128,133 @@
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/laraveldb/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/brianium/paratest" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/fidry/cpu-core-counter" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/inertiajs/inertia-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/jean85/pretty-package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/breeze" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/pint" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/sail" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/sanctum" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/league/commonmark" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nunomaduro/collision" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/pestphp/pest" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/pestphp/pest-plugin" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/pestphp/pest-plugin-arch" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/pestphp/pest-plugin-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/spatie/backtrace" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/spatie/flare-client-php" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/spatie/ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/spatie/laravel-ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/css-selector" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/ta-tikoma/phpunit-architecture-test" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/tightenco/ziggy" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelBlog/vendor/webmozart/assert" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
